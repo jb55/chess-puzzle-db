@@ -8,7 +8,7 @@ pup[0] is required for processing the html
 steps:
 
   wget -cr --convert-links http://www.wtharvey.com/index.html
-  parallel ./process ::: www.wtharbey.com/*.html > tmp.txt
+  parallel ./process ::: www.wtharvey.com/*.html > tmp.txt
   awk -f process.awk < tmp.txt > chess-puzzles.txt
 
 the awk script is not perfect, patches welcome
