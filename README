@@ -3,6 +3,8 @@ chess puzzle db
 
 scraped from wtharvey.com, thanks!
 
+pup[0] is required for processing the html
+
 steps:
 
   wget -cr --convert-links http://www.wtharvey.com/index.html
@@ -10,3 +12,6 @@ steps:
   awk -f process.awk < tmp.txt > chess-puzzles.txt
 
 the awk script is not perfect, patches welcome
+
+
+[0] https://github.com/ericchiang/pup
