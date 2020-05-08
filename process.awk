@@ -14,23 +14,23 @@ BEGIN {
     state = "solution"
   }
   else if (state == "name") {
-    if ($0 ~ /^([wW]hite|[bB]lack) [mM]ates [iI]n [0-9]+\.?[[:space:]]*$/) {
+    if ($0 ~ /^([wW]hite|[bB]lack) ([mM]ates [iI]n [0-9]+|to move and win)\.?[[:space:]]*$/) {
       row[0] = $0
       state = "name"
     }
-    else if ($0 ~ /^([wW]hite|[bB]lack) [mM]ates [iI]n [0-9]+\.?.*/) {
+    else if ($0 ~ /^([wW]hite|[bB]lack) ([mM]ates [iI]n [0-9]+|to move and win)\.?.*/) {
       # this might have name at end
-      ok = match($0, /^(([wW]hite|[bB]lack) [mM]ates [iI]n [0-9]+\.?)[[:space:]]*(.*)/, arr)
+      ok = match($0, /^(([wW]hite|[bB]lack) ([mM]ates [iI]n [0-9]+|to move and win)\.?)[[:space:]]*(.*)/, arr)
       if (ok == 0) {
         print "WAT:", $0
       }
-      else if (arr[3] ~ /^[[:space:]]*$/) {
+      else if (arr[4] ~ /^[[:space:]]*$/) {
         state = "name"
-        row[0] = arr[3]
+        row[0] = arr[4]
       }
       else {
         row[0] = arr[1]
-        row[1] = arr[3]
+        row[1] = arr[4]
         state = "fen"
       }
     }
