@@ -1,13 +1,12 @@
-
 chess puzzle db
 ---------------
 
-scraped from wtharvey.com
-
+scraped from wtharvey.com, thanks!
 
 steps:
 
+  wget -cr --convert-links http://www.wtharvey.com/index.html
+  parallel ./process ::: www.wtharbey.com/*.html > tmp.txt
+  awk -f process.awk < tmp.txt > chess-puzzles.txt
 
-wget -cr --convert-links http://www.wtharvey.com/index.html
-parallel ./process ::: www.wtharbey.com/*.html > tmp.txt
-awk -f process.awk < tmp.txt > chess-puzzles.txt
+the awk script is not perfect, patches welcome
